@@ -10,19 +10,23 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.JPanel;
 
 import model.gameLogic.GameLogic;
 import view.tablutboard.Board;
 
-public class GameFrame extends JPanel {
+public class GameFrame extends JPanel{
 	
 	Board board;	
 	GameLogic gameLogic;
 	
-	int squareWidth = 50; // The widht where a TablutPiece can be
+	int squareWidth = 50; // The width where a TablutPiece can be
 	int squareHeight = 50;
+
 	
 	public GameFrame () {
 		// Creates the game logic to 
@@ -31,6 +35,7 @@ public class GameFrame extends JPanel {
 		this.setDefaultOptionForJPanel();
 		this.createGameBoard();
 		this.add(board);
+		
 		
 		// Creates the game logic to 
 	}

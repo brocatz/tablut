@@ -200,20 +200,24 @@ public class GameLogic {
 		if(this.is_DefenderTurn)
 			return this.list_defender;
 		return null; // will never be null 
+
 	}
 	
 	public void switchPlayer() {
-		if (this.is_AssaliantTurn) {
-			this.is_AssaliantTurn = false;
-			this.is_DefenderTurn = true;
+		// if (this.is_AssaliantTurn) {
+		// 	this.is_AssaliantTurn = false;
+		// 	this.is_DefenderTurn = true;
 			
-			return; //After we switch the turns we don t need to perform any operation on switch player 
-		}
+		// 	return; //After we switch the turns we don t need to perform any operation on switch player 
+		// }
 			
-		if(this.is_DefenderTurn) {
-			this.is_DefenderTurn = false;
-			this.is_AssaliantTurn = true;
-		}
+		// if(this.is_DefenderTurn) {
+		// 	this.is_DefenderTurn = false;
+		// 	this.is_AssaliantTurn = true;
+		// }
+
+		this.is_AssaliantTurn = !this.is_AssaliantTurn;
+		this.is_DefenderTurn = !this.is_DefenderTurn;
 			
 	}
 	
@@ -231,9 +235,10 @@ public class GameLogic {
 		int transformKey = key;
 		// La premiere ligne va de 0 a 8
 		// Alors je cherche un valeur entre 0 et 8
-		while (transformKey > 8) {
-			transformKey -= 9;
-		}
+		// while (transformKey > 8) {
+		// 	transformKey -= 9;
+		// }
+		transformKey = transformKey % 9;
 
 		return transformKey;
 	}
@@ -243,16 +248,17 @@ public class GameLogic {
 	// YPos
 	public int convertKeyToRow(int key) {
 		int transformKey = key;
-		int counter = 0;
+		// int counter = 0;
 
 		// Je recherche combien de fois je peux soutraire en hauteur
 		// Mais on utilise une cle on doit etre entre 0 et 8
-		while (transformKey > 8) {
-			transformKey -= 9;
-			counter++;
-		}
+		// while (transformKey > 8) {
+		// 	transformKey -= 9;
+		// 	counter++;
+		// }
+		transformKey = transformKey / 9;
 
-		return counter;
+		return transformKey;
 	}
 	
 	public int convertRowToCoord(int row) {
